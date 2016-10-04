@@ -1,9 +1,13 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express')
+const router = express.Router()
+const models = require('../models')
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+router.get('/', async (req, res, next) => {
+  await models.User.findAll()
+  
+  res.render('index', { title: 'Express' })
+  // res.sendFile('../public/images/dummy_image.png')
 });
 
-module.exports = router;
+module.exports = router
