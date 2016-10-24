@@ -1,9 +1,14 @@
 const express = require('express')
 const router = express.Router()
 const models = require('../models')
+const config = require('../config')
+const ga = require('node-ga')(config.ga, {safe: true})
 
 /* GET home page. */
 router.get('/', async (req, res, next) => {
+  /**
+   * @see https://gist.github.com/rjrodger/796988
+   */
   const imgdata = [
     0x47,0x49, 0x46,0x38, 0x39,0x61, 0x01,0x00, 0x01,0x00, 0x80,0x00, 0x00,0xFF, 0xFF,0xFF,
     0x00,0x00, 0x00,0x21, 0xf9,0x04, 0x04,0x00, 0x00,0x00, 0x00,0x2c, 0x00,0x00, 0x00,0x00,
@@ -12,7 +17,9 @@ router.get('/', async (req, res, next) => {
 
   res.set('Content-Length', imgdata.length)
   res.set('Content-Type', 'image/gif')
-  res.send(new Buffer(imgdata))
-});
+  return ga(req, res, function () {
+    res.send(new Buffer(imgdata))
+  })
+})
 
 module.exports = router
