@@ -12,6 +12,7 @@ router.get('/:id', async (req, res, next) => {
   if (referer && publicUser) {
     req.visitor
       .set('key', id)
+    req.visitor
       .pageview(referer)
       .send()
 
