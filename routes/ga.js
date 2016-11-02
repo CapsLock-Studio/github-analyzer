@@ -29,7 +29,6 @@ router.get('/:id', async (req, res, next) => {
     const filter = `ga:key==${id}`
 
     utils.analytics(metrics, filter, (err, data) => {
-      console.log(data, err);
       res.json(data)
     })
   } else {
