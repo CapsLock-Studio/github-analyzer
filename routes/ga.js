@@ -26,9 +26,9 @@ router.get('/:id', async (req, res, next) => {
     res.send(new Buffer(imgdata))
   } else if (privateUser) {
     const metrics = req.query.metrics || 'ga:visits,ga:bounces'
-    const filter = `ga:key==${id}`
+    const filters = `ga:key==${id}`
 
-    utils.analytics(metrics, filter, (err, data) => {
+    utils.analytics(metrics, filters, (err, data) => {
       res.json(data)
     })
   } else {

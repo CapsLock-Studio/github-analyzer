@@ -9,7 +9,7 @@ const jwtClient = new google.auth.JWT(
   null
 )
 
-module.exports = (metrics, filter, cb) => {
+module.exports = (metrics, filters, cb) => {
   jwtClient.authorize(function (err, tokens) {
     if (err) {
       return;
@@ -22,7 +22,7 @@ module.exports = (metrics, filter, cb) => {
       'start-date': '30daysAgo',
       'end-date': 'yesterday',
       'metrics': metrics,
-      'filter': filter
+      'filters': filters
     }, cb)
   })
 };
