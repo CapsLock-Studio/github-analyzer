@@ -6,6 +6,10 @@ const cookieParser = require('cookie-parser')
 const bodyParser = require('body-parser')
 const routes = require('./routes/index')
 const app = express()
+const ua = require('universal-analytics')
+const config = require('./config')
+
+app.use(ua.middleware(config.ga.tracking, {cookieName: '_ga'}));
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'))
@@ -29,28 +33,14 @@ app.use((req, res, next) => {
 })
 
 // error handlers
-
-// development error handler
-// will print stacktrace
-if (app.get('env') === 'development') {
-  app.use((err, req, res, next) => {
-    res.status(err.status || 500)
-    res.render('error', {
-      message: err.message,
-      error: err
-    })
-  })
-}
-
 // production error handler
 // no stacktraces leaked to user
 app.use((err, req, res, next) => {
   res.status(err.status || 500)
-  res.render('error', {
-    message: err.message,
-    error: {}
+  res.json({
+    status: 'failed',
+    message: err.message
   })
 })
-
 
 module.exports = app

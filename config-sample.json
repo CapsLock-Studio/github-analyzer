@@ -1,0 +1,19 @@
+{
+  "port": 3000,
+  "host": "database.sqlite",
+  "dialect": "sqlite",
+  "ga": {
+    "tracking": "",
+    "ids": "",
+    "key": ""
+  },
+  "smtp": {
+    "host": "",
+    "port": "",
+    "secure": false,
+    "auth": {
+      "user": "",
+      "pass": ""
+    }
+  }
+}

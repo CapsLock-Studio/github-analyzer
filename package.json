@@ -8,16 +8,20 @@
   "dependencies": {
     "body-parser": "~1.15.1",
     "cookie-parser": "~1.4.3",
-    "debug": "~2.2.0",
+    "debug": "^2.2.0",
     "express": "~4.13.4",
-    "jade": "~1.11.0",
+    "fs-extra": "^0.30.0",
+    "googleanalytics": "^0.3.7",
+    "googleapis": "^14.1.0",
+    "md5": "^2.2.1",
     "morgan": "~1.7.0",
-    "node-ga": "^0.1.1",
+    "nodemailer": "^2.6.4",
     "pug": "^2.0.0-beta6",
     "sequelize": "^3.24.3",
     "sequelize-cli": "^2.4.0",
     "serve-favicon": "~2.3.0",
-    "sqlite3": "^3.1.4"
+    "sqlite3": "^3.1.4",
+    "universal-analytics": "^0.4.6"
   },
   "devDependencies": {
     "babel-cli": "^6.16.0",

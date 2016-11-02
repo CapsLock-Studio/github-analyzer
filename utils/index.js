@@ -1,8 +1,6 @@
-const express = require('express')
-const app     = express()
 const path    = require('path')
 const fs      = require('fs-extra')
-const router  = express.Router()
+const utils   = {}
 
 fs
   .readdirSync(__dirname)
@@ -12,13 +10,7 @@ fs
   .forEach(function(file) {
     const jsFilePath = path.join(__dirname, file)
     const base = path.basename(jsFilePath).slice(0, -3)
-    app.use(`/${base}`, require(jsFilePath))
+    utils[base] = require(jsFilePath)
   })
 
-router.get('/', async (req, res, next) => {
-  res.status(404).send('API Test')
-})
-
-app.use('/', router)
-
-module.exports = app
+module.exports = utils

@@ -39,3 +39,7 @@ jspm_packages
 .idea
 
 database.sqlite
+
+config/config.json
+
+key.json

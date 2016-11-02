@@ -1,4 +1,11 @@
-const env    = process.env.NODE_ENV || 'development';
-const config = require(__dirname + '/config.json')[env];
+const fs     = require('fs-extra')
+const path   = __dirname + '/config.json'
+const sample = __dirname + '/../config-sample.json'
 
-module.exports = config;
+if (!fs.existsSync(path)) {
+  fs.copySync(sample, path)
+}
+
+const config = require(path)
+
+module.exports = config

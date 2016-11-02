@@ -2,7 +2,9 @@
 
 module.exports = (sequelize, DataTypes) => {
   const User = sequelize.define('User', {
-    username: DataTypes.STRING
+    email: DataTypes.STRING,
+    publicKey: DataTypes.STRING,
+    privateKey: DataTypes.STRING
   })
 
   return User
